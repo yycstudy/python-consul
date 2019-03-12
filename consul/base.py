@@ -1713,6 +1713,7 @@ class Consul(object):
                 name=None,
                 node=None,
                 checks=None,
+                token=None,
                 lock_delay=15,
                 behavior='release',
                 ttl=None,
@@ -1753,6 +1754,8 @@ class Consul(object):
             dc = dc or self.agent.dc
             if dc:
                 params.append(('dc', dc))
+            if token:
+                params.append(('token', token))
             data = {}
             if name:
                 data['name'] = name
