@@ -1782,7 +1782,7 @@ class Consul(object):
                 params=params,
                 data=data)
 
-        def destroy(self, session_id, dc=None):
+        def destroy(self, session_id, token=None, dc=None):
             """
             Destroys the session *session_id*
 
@@ -1792,6 +1792,8 @@ class Consul(object):
             dc = dc or self.agent.dc
             if dc:
                 params.append(('dc', dc))
+            if token:
+                params.append(('token', token))
             return self.agent.http.put(
                 CB.bool(),
                 '/v1/session/destroy/%s' % session_id,
