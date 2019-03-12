@@ -527,7 +527,6 @@ class Consul(object):
                     params.append(('wait', wait))
             if recurse:
                 params.append(('recurse', '1'))
-            token = token or self.agent.token
             if token:
                 params.append(('token', token))
             dc = dc or self.agent.dc
